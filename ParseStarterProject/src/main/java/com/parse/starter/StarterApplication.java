@@ -35,7 +35,7 @@ public class StarterApplication extends Application {
             .server("http://ec2-54-202-53-217.us-west-2.compute.amazonaws.com/parse/")
             .build()
     );
-    
+
     ParseUser.enableAutomaticUser();
 
     ParseACL defaultACL = new ParseACL();
