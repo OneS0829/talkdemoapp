@@ -51,6 +51,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.parse.starter.UsersListActivity" />
+        <activity android:name="com.parse.starter.ChatMessageActivity" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

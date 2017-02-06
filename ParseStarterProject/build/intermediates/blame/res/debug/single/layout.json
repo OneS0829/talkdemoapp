@@ -40,6 +40,10 @@
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
+        "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chat_message.xml",
+        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\src\\main\\res\\layout\\activity_chat_message.xml"
+    },
+    {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_media_cancel_action.xml"
     },

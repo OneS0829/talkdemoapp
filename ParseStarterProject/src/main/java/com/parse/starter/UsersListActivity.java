@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,10 +20,11 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.parse.ParseQuery.getQuery;
+
 public class UsersListActivity extends AppCompatActivity {
 
-    ParseUser parseUser;
-    ArrayList usersArrayList = new ArrayList();
+    ArrayList<String> usersArrayList = new ArrayList<String>();
     ArrayAdapter arrayAdapter;
     ListView usersListView;
     String userName;
@@ -30,6 +33,7 @@ public class UsersListActivity extends AppCompatActivity {
     {
         if(MainActivity.debugMsg == true) Log.i("onShowUserView","Entry");
 
+        //ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
         ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
         parseQuery.whereNotEqualTo("username",userName);
         parseQuery.findInBackground(new FindCallback<ParseUser>() {
@@ -64,6 +68,18 @@ public class UsersListActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter(UsersListActivity.this, android.R.layout.simple_list_item_1, usersArrayList);
         usersListView.setAdapter(arrayAdapter);
 
+        usersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(MainActivity.debugMsg == true) Log.i("onItemClick",usersArrayList.get(position));
+
+                Intent intent = new Intent();
+                intent.setClass(UsersListActivity.this, ChatMessageActivity.class);
+                intent.putExtra("opponentName", usersArrayList.get(position));
+                startActivity(intent);
+            }
+        });
+
         onShowUserView();
     }
 
@@ -85,7 +101,7 @@ public class UsersListActivity extends AppCompatActivity {
 
                 if(MainActivity.debugMsg == true) Log.i("Menu item selected", "Logout");
                 Intent intent = new Intent();
-                parseUser.logOut();
+                ParseUser.logOut();
                 intent.setClass(UsersListActivity.this, MainActivity.class);
                 startActivity(intent);
 
