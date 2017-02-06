@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:9:1-36:12
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:9:1-37:12
 	package
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:10:5-32
 		INJECTED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml
@@ -51,7 +51,7 @@ ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\s
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:15:22-76
 application
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:17:5-34:19
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:17:5-35:19
 MERGED from [com.google.android.gms:play-services:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services\9.4.0\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.4.0\AndroidManifest.xml:24:5-32:19
 MERGED from [com.google.android.gms:play-services-analytics:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.4.0\AndroidManifest.xml:27:5-20
@@ -128,7 +128,9 @@ ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\s
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:32:19-52
 activity#com.parse.starter.ChatMessageActivity
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:33:9-66
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:33:9-34:20
+	android:windowSoftInputMode
+		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:33:55-97
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:33:19-54
 uses-sdk

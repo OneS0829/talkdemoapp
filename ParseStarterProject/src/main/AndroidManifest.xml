@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".UsersListActivity" />
-        <activity android:name=".ChatMessageActivity"></activity>
+        <activity android:name=".ChatMessageActivity" android:windowSoftInputMode="adjustResize" >
+        </activity>
     </application>
 
 </manifest>
