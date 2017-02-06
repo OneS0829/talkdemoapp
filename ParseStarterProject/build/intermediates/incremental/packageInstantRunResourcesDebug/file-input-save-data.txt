@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Feb 06 00:32:38 CST 2017
+#Mon Feb 06 02:01:41 CST 2017
 210.set=ANDROID_RESOURCE
 282.file=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\cast_ic_mini_controller_stop_large.xml
 14.set=ANDROID_RESOURCE

@@ -24,12 +24,14 @@ public class UsersListActivity extends AppCompatActivity {
     ArrayList usersArrayList = new ArrayList();
     ArrayAdapter arrayAdapter;
     ListView usersListView;
+    String userName;
 
     public void onShowUserView()
     {
         if(MainActivity.debugMsg == true) Log.i("onShowUserView","Entry");
 
         ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
+        parseQuery.whereNotEqualTo("username",userName);
         parseQuery.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, ParseException e) {
@@ -54,7 +56,7 @@ public class UsersListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("username");
+        userName = intent.getStringExtra("username");
         //String passWord = intent.getStringExtra("password");
         setTitle("Users List ( "+ userName +" Login )");
         usersListView = (ListView)findViewById(R.id.usersListView);
