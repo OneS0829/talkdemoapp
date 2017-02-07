@@ -5,19 +5,19 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="96885142527220"
+    timestamp="151627785415283"
     token="4489593741132417195"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="427" />
+        duration="273" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="93" />
+        duration="34" />
     <task
         name="verifier"
         duration="2" />
@@ -27,14 +27,14 @@
         type="DEX" />
 
     <build
-        timestamp="93523164676320"
-        verifier="MANIFEST_FILE_CHANGE" >
+        timestamp="151117074427149"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="96885142527220"
+        timestamp="151627785415283"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"

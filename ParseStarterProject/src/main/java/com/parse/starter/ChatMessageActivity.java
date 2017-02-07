@@ -27,7 +27,7 @@ import java.util.List;
 import static com.parse.ParseQuery.getQuery;
 
 public class ChatMessageActivity extends AppCompatActivity {
-    ParseObject parseObject = new ParseObject("message");
+
     EditText chatEditText;
     String opponentName = "";
     String userName = "";
@@ -38,6 +38,8 @@ public class ChatMessageActivity extends AppCompatActivity {
 
     public void onSendMessage(View view)
     {
+         ParseObject parseObject = new ParseObject("message");
+
          String message = chatEditText.getText().toString();
          String recipient = opponentName;
          String sender = userName;
@@ -45,6 +47,8 @@ public class ChatMessageActivity extends AppCompatActivity {
          parseObject.put("recipient", recipient);
          parseObject.put("sender", sender);
          parseObject.put("message", message);
+
+         chatEditText.setText("");
 
          parseObject.saveInBackground(new SaveCallback() {
              @Override
@@ -66,33 +70,41 @@ public class ChatMessageActivity extends AppCompatActivity {
     public void onUpdateMessage()
     {
         messageArrayList.clear();
-        //messageArrayList.add("test message");
 
-        ParseQuery<ParseObject> parseQuery = new ParseQuery<ParseObject>("message");
+        ParseQuery<ParseObject> parseQueryCurrectUserToOpponent = new ParseQuery<ParseObject>("message");
+        ParseQuery<ParseObject> parseQueryOpponentToCurrectUser = new ParseQuery<ParseObject>("message");
 
-        parseQuery.whereEqualTo("recipient", opponentName);
-        parseQuery.orderByAscending("createdAt");
-        parseQuery.setLimit(20);
+        parseQueryCurrectUserToOpponent.whereEqualTo("recipient", opponentName); // Currect User -> Opponent
+        parseQueryCurrectUserToOpponent.whereEqualTo("sender", userName);
+        parseQueryOpponentToCurrectUser.whereEqualTo("recipient", userName); //  Opponent  -> Currect User
+        parseQueryOpponentToCurrectUser.whereEqualTo("sender", opponentName);
 
-        parseQuery.findInBackground(new FindCallback<ParseObject>() {
+        List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+        queries.add(parseQueryCurrectUserToOpponent);
+        queries.add(parseQueryOpponentToCurrectUser);
+        ParseQuery<ParseObject> query = ParseQuery.or(queries);
+        query.orderByAscending("createdAt");
+
+        query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                if(e == null)
-                {
-                    for(ParseObject object : objects)
-                    {
-                        String recipient = object.get("recipient").toString();
-                        String sender = object.get("sender").toString();
-                        String message = object.get("message").toString();
-                        messageArrayList.add(sender+" -> "+recipient+" : "+message);
+                if(e == null) {
+                    if(objects.size() > 0) {
+                        for(ParseObject object : objects)
+                        {
+                            String messageContent = object.getString("message");
+                            if(object.get("sender").toString().equals(opponentName))
+                            {
+                                messageContent = " > " + messageContent;
+                            }
+                            messageArrayList.add(messageContent);
+                        }
+                        arrayAdapter.notifyDataSetChanged();
                     }
-
-                    arrayAdapter.notifyDataSetChanged();
                 }
             }
         });
 
-        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override

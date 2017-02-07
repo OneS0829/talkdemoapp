@@ -108,6 +108,10 @@
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\9.4.0\\res\\drawable\\cast_ic_notification_rewind.xml"
     },
     {
+        "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable\\sendicon.png",
+        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\src\\main\\res\\drawable\\sendicon.png"
+    },
+    {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_mini_controller_progress_drawable.xml",
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\9.4.0\\res\\drawable\\cast_mini_controller_progress_drawable.xml"
     },
