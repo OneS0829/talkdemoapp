@@ -1,6 +1,8 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,6 +39,10 @@ public class ChatMessageActivity extends AppCompatActivity {
     ArrayList<String> messageArrayList = new ArrayList<String>();
     ArrayAdapter arrayAdapter;
 
+    Thread messageUpdateThread;
+    boolean messageUpdateActive = false;
+    int beforeMessageCount = 0;
+
     public void onSendMessage(View view)
     {
          ParseObject parseObject = new ParseObject("message");
@@ -56,11 +63,9 @@ public class ChatMessageActivity extends AppCompatActivity {
                  if(e != null)
                  {
                      Toast.makeText(ChatMessageActivity.this, "Error: "+e.toString(), Toast.LENGTH_SHORT).show();
-
                  }
-                 else if(e == null)
-                 {
-                     onUpdateMessage();
+                 else{
+                     //onUpdateMessage();
                  }
              }
          });
@@ -69,8 +74,6 @@ public class ChatMessageActivity extends AppCompatActivity {
 
     public void onUpdateMessage()
     {
-        messageArrayList.clear();
-
         ParseQuery<ParseObject> parseQueryCurrectUserToOpponent = new ParseQuery<ParseObject>("message");
         ParseQuery<ParseObject> parseQueryOpponentToCurrectUser = new ParseQuery<ParseObject>("message");
 
@@ -90,16 +93,23 @@ public class ChatMessageActivity extends AppCompatActivity {
             public void done(List<ParseObject> objects, ParseException e) {
                 if(e == null) {
                     if(objects.size() > 0) {
-                        for(ParseObject object : objects)
-                        {
-                            String messageContent = object.getString("message");
-                            if(object.get("sender").toString().equals(opponentName))
+                        int currentMessageCount = 0;
+                        for(ParseObject object : objects) {
+                            currentMessageCount++;
+                            if(currentMessageCount > beforeMessageCount)
                             {
-                                messageContent = " > " + messageContent;
+                                String messageContent = object.getString("message");
+                                if(object.get("sender").toString().equals(opponentName))
+                                {
+                                    messageContent = " > " + messageContent;
+                                }
+                                messageArrayList.add(messageContent);
+                                beforeMessageCount++;
                             }
-                            messageArrayList.add(messageContent);
                         }
+
                         arrayAdapter.notifyDataSetChanged();
+                        messageListView.setSelection(messageArrayList.size()-1);
                     }
                 }
             }
@@ -109,6 +119,7 @@ public class ChatMessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(MainActivity.debugMsg == true) Log.i("Activity State","onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_message);
         chatEditText = (EditText)findViewById(R.id.chatEditText);
@@ -121,8 +132,55 @@ public class ChatMessageActivity extends AppCompatActivity {
         setTitle(opponentName+"     ( "+userName+" Login )");
 
         messageListView.setAdapter(arrayAdapter);
-        onUpdateMessage();
+        messageArrayList.clear();
+        beforeMessageCount = 0;
+
+        //onUpdateMessage();
+
+        messageUpdateThread = new MessageUpdateThread();
+        messageUpdateActive = true;
+        messageUpdateThread.start();
+
     }
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        if(MainActivity.debugMsg == true) Log.i("Activity State","onPause");
+        super.onPause();
+
+        if (messageUpdateThread != null) {
+            messageUpdateActive = false;
+        }
+
+    }
+
+    class MessageUpdateThread extends Thread {
+
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            super.run();
+            while(messageUpdateActive){
+                try {
+                    Thread.sleep(1000);
+                    //Log.i("Update","Message Updating.....");
+                    Message message = new Message();
+                    mHandler.handleMessage(message);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            onUpdateMessage();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

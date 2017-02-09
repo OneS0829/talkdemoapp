@@ -27,7 +27,8 @@
             android:id="@+id/chatContentListView"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:transcriptMode="alwaysScroll"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -47,8 +48,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="input message here..."
-                android:onClick="onSendMessage" />
+                android:hint="input message here..." />
 
             <ImageButton
                 android:layout_width="match_parent"
