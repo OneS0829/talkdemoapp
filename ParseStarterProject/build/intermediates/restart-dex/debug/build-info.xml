@@ -5,40 +5,33 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="144065768377234"
+    timestamp="146967721573175"
     token="4489593741132417195"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="327" />
+        duration="526" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="45" />
+        duration="430" />
     <task
         name="verifier"
-        duration="3" />
+        duration="233" />
 
     <artifact
-        location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-        type="DEX" />
+        location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="88279350515751"
+        timestamp="146967721573175"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="144065768377234"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

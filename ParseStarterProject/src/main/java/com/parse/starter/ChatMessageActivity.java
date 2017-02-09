@@ -6,15 +6,18 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -29,7 +32,7 @@ import java.util.List;
 
 import static com.parse.ParseQuery.getQuery;
 
-public class ChatMessageActivity extends AppCompatActivity {
+public class ChatMessageActivity extends AppCompatActivity{
 
     EditText chatEditText;
     String opponentName = "";
@@ -65,7 +68,7 @@ public class ChatMessageActivity extends AppCompatActivity {
                      Toast.makeText(ChatMessageActivity.this, "Error: "+e.toString(), Toast.LENGTH_SHORT).show();
                  }
                  else{
-                     //onUpdateMessage();
+                     onUpdateMessage();
                  }
              }
          });
@@ -105,11 +108,10 @@ public class ChatMessageActivity extends AppCompatActivity {
                                 }
                                 messageArrayList.add(messageContent);
                                 beforeMessageCount++;
+                                arrayAdapter.notifyDataSetChanged();
+                                messageListView.setSelection(messageArrayList.size()-1);
                             }
                         }
-
-                        arrayAdapter.notifyDataSetChanged();
-                        messageListView.setSelection(messageArrayList.size()-1);
                     }
                 }
             }
@@ -123,6 +125,20 @@ public class ChatMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_message);
         chatEditText = (EditText)findViewById(R.id.chatEditText);
+        chatEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ( (actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN ))){
+                    onSendMessage(v);
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        });
+
+
         messageListView = (ListView)findViewById(R.id.chatContentListView);
         arrayAdapter = new ArrayAdapter(ChatMessageActivity.this,android.R.layout.simple_list_item_1,messageArrayList);
 
@@ -135,31 +151,26 @@ public class ChatMessageActivity extends AppCompatActivity {
         messageArrayList.clear();
         beforeMessageCount = 0;
 
-        //onUpdateMessage();
-
         messageUpdateThread = new MessageUpdateThread();
         messageUpdateActive = true;
         messageUpdateThread.start();
-
     }
 
     @Override
     protected void onPause() {
-        // TODO Auto-generated method stub
         if(MainActivity.debugMsg == true) Log.i("Activity State","onPause");
         super.onPause();
 
         if (messageUpdateThread != null) {
             messageUpdateActive = false;
         }
-
     }
+
 
     class MessageUpdateThread extends Thread {
 
         @Override
         public void run() {
-            // TODO Auto-generated method stub
             super.run();
             while(messageUpdateActive){
                 try {
