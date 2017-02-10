@@ -28,6 +28,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:divider="@null"
             android:transcriptMode="alwaysScroll"/>
 
         <LinearLayout
@@ -37,10 +38,11 @@
             android:id="@+id/chatEditAreaLinearLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/chatContentListView">
+            android:layout_alignBottom="@+id/chatContentListView"
+            android:weightSum="6">
 
             <EditText
-                android:layout_width="288dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
@@ -48,17 +50,19 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="input message here..." />
+                android:hint="input message here..."
+                android:layout_weight="5"/>
 
             <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/sendicon"
                 android:id="@+id/imageButton"
                 android:saveEnabled="false"
                 android:scaleType="fitCenter"
                 android:background="@android:color/darker_gray"
-                android:onClick="onSendMessage" />
+                android:onClick="onSendMessage"
+                android:layout_weight="1"/>
 
         </LinearLayout>
     </LinearLayout>

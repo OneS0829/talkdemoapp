@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     parseUser = new ParseUser();
     getSupportActionBar().hide();
     changeModeTextView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-
+    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
 

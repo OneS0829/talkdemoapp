@@ -1,10 +1,12 @@
 package com.parse.starter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -27,7 +30,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.parse.ParseQuery.getQuery;
@@ -40,11 +45,15 @@ public class ChatMessageActivity extends AppCompatActivity{
 
     ListView messageListView;
     ArrayList<String> messageArrayList = new ArrayList<String>();
-    ArrayAdapter arrayAdapter;
+    private ChatArrayAdapter chatArrayAdapter;
 
     Thread messageUpdateThread;
     boolean messageUpdateActive = false;
     int beforeMessageCount = 0;
+    private int type = 0;
+    private int beforeDay = 0;
+    private int beforeMonth = 0;
+    private int beforeYear = 0;
 
     public void onSendMessage(View view)
     {
@@ -97,18 +106,43 @@ public class ChatMessageActivity extends AppCompatActivity{
                 if(e == null) {
                     if(objects.size() > 0) {
                         int currentMessageCount = 0;
+                        int currentDay = 0;
+                        int currentMonth = 0;
+                        int currentYear = 0;
+
                         for(ParseObject object : objects) {
+
                             currentMessageCount++;
+                            Date date = object.getCreatedAt();
+                            SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
+                            SimpleDateFormat df2 = new SimpleDateFormat("h:mm a");
+                            String reportDate = df.format(date);
+                            String reportDate2 = df2.format(date);
+                            currentDay = date.getDay();
+                            currentMonth = date.getMonth();
+                            currentYear = date.getYear();
+
+                            if(currentYear >= beforeYear && currentMonth >= beforeMonth && currentDay > beforeDay)
+                            {
+                                type = 2;
+                                chatArrayAdapter.add(new ChatMessage(type, reportDate, null));
+                                beforeDay = currentDay;
+                                beforeMonth = currentMonth;
+                                beforeYear = currentYear;
+                            }
+
                             if(currentMessageCount > beforeMessageCount)
                             {
+                                //chatArrayAdapter.add(new ChatMessage(2, reportDate));
                                 String messageContent = object.getString("message");
+                                type = 0; //user
                                 if(object.get("sender").toString().equals(opponentName))
                                 {
-                                    messageContent = " > " + messageContent;
+                                    type = 1;
                                 }
-                                messageArrayList.add(messageContent);
+                                chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2));
                                 beforeMessageCount++;
-                                arrayAdapter.notifyDataSetChanged();
+                                chatArrayAdapter.notifyDataSetChanged();
                                 messageListView.setSelection(messageArrayList.size()-1);
                             }
                         }
@@ -121,39 +155,40 @@ public class ChatMessageActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(MainActivity.debugMsg == true) Log.i("Activity State","onCreate");
+        if (MainActivity.debugMsg == true) Log.i("Activity State", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_message);
-        chatEditText = (EditText)findViewById(R.id.chatEditText);
+        chatEditText = (EditText) findViewById(R.id.chatEditText);
         chatEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ( (actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN ))){
+                if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
                     onSendMessage(v);
                     return true;
-                }
-                else{
+                } else {
                     return false;
                 }
             }
         });
 
 
-        messageListView = (ListView)findViewById(R.id.chatContentListView);
-        arrayAdapter = new ArrayAdapter(ChatMessageActivity.this,android.R.layout.simple_list_item_1,messageArrayList);
+        messageListView = (ListView) findViewById(R.id.chatContentListView);
+        chatArrayAdapter = new ChatArrayAdapter(getApplicationContext(), R.layout.right);
 
         Intent intent = getIntent();
         opponentName = intent.getStringExtra("opponentName");
         userName = ParseUser.getCurrentUser().getUsername();
-        setTitle(opponentName+"     ( "+userName+" Login )");
+        setTitle(opponentName);
 
-        messageListView.setAdapter(arrayAdapter);
+        messageListView.setAdapter(chatArrayAdapter);
         messageArrayList.clear();
         beforeMessageCount = 0;
 
         messageUpdateThread = new MessageUpdateThread();
         messageUpdateActive = true;
         messageUpdateThread.start();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override
