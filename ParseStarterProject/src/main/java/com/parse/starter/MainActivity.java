@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             if(debugMsg == true) {
                 Log.i("User Info", userName);
                 Log.i("Password Info", passWord);
-
             }
             if(loginFlag == true) {
                 if(debugMsg == true) Log.i("Mode", "Login");
@@ -100,24 +99,17 @@ public class MainActivity extends AppCompatActivity {
             else {
                 if(debugMsg == true) Log.i("Mode", "Sign In");
 
-                parseUser.setUsername(userName);
-                parseUser.setPassword(passWord);
-                parseUser.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if(e == null)
-                        {
-                            if(debugMsg == true) Log.i("Sign In Info","Success!!");
-                            Toast.makeText(MainActivity.this, "Sign In Successfully, Please login you username and password", Toast.LENGTH_LONG).show();
-                            loginFlag = true;
-                            loginOrSignInButton.setText("Login");
-                            changeModeTextView.setText("Or, Sign In");
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this, "Error: "+e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                loginFlag = true;
+                loginOrSignInButton.setText("Login");
+                changeModeTextView.setText("Or, Sign In");
+
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, SignInActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("userName",userName);
+                bundle.putString("passWord",passWord);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         }
     }

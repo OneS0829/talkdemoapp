@@ -13,7 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -25,6 +27,7 @@ import static com.parse.ParseQuery.getQuery;
 public class UsersListActivity extends AppCompatActivity {
 
     ArrayList<String> usersArrayList = new ArrayList<String>();
+    ArrayList<String> userProfileArrayList = new ArrayList<String>();
     ArrayAdapter arrayAdapter;
     ListView usersListView;
     String userName;
@@ -33,7 +36,9 @@ public class UsersListActivity extends AppCompatActivity {
     {
         if(MainActivity.debugMsg == true) Log.i("onShowUserView","Entry");
 
-        //ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
+
+
+
         ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
         parseQuery.whereNotEqualTo("username",userName);
         parseQuery.findInBackground(new FindCallback<ParseUser>() {
@@ -61,10 +66,12 @@ public class UsersListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users_list);
         Intent intent = getIntent();
         userName = intent.getStringExtra("username");
+
         //String passWord = intent.getStringExtra("password");
-        setTitle("Users List ( "+ userName +" Login )");
         usersListView = (ListView)findViewById(R.id.usersListView);
         usersArrayList.clear();
+        userProfileArrayList.clear();
+
         arrayAdapter = new ArrayAdapter(UsersListActivity.this, android.R.layout.simple_list_item_1, usersArrayList);
         usersListView.setAdapter(arrayAdapter);
 
@@ -77,6 +84,19 @@ public class UsersListActivity extends AppCompatActivity {
                 intent.setClass(UsersListActivity.this, ChatMessageActivity.class);
                 intent.putExtra("opponentName", usersArrayList.get(position));
                 startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
+        parseQuery.whereEqualTo("username",userName);
+        parseQuery.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                if(e == null)
+                {
+                    String user_nickName = object.getString("nickname");
+                    setTitle(user_nickName +"(Login)");
+                }
             }
         });
 

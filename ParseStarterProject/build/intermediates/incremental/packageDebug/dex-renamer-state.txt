@@ -1,4 +1,4 @@
-#Fri Feb 10 12:52:51 CST 2017
+#Tue Feb 14 19:26:22 CST 2017
 base.0=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_964385d7305b8f55fc8cf3ebc6b7a0135c702b59
 renamed.1=classes.dex
 renamed.0=classes2.dex

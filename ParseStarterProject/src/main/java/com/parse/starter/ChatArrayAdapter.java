@@ -48,7 +48,6 @@ class ChatArrayAdapter extends ArrayAdapter<ChatMessage> {
             chatText.setText(chatMessageObj.message);
             timeText = (TextView) row.findViewById(R.id.msg_time);
             timeText.setText(chatMessageObj.msgTime);
-
         }else if(chatMessageObj.type == 1){
             row = inflater.inflate(R.layout.left, parent, false);
             chatText = (TextView) row.findViewById(R.id.msgr);
