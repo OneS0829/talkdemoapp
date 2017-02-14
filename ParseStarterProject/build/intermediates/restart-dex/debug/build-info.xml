@@ -5,8 +5,9 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="29680296183236"
-    token="4489593741132417195" >
+    timestamp="32221311690619"
+    token="4489593741132417195"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
@@ -21,20 +22,43 @@
         name="verifier"
         duration="0" />
 
+    <artifact
+        location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
+
     <build
-        timestamp="12478141692457"
+        timestamp="30642151852157"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="29484844357845"
+        timestamp="31356373556858"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="31654437028491"
         verifier="R_CLASS_CHANGE" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
             type="DEX" />
     </build>
-    <build timestamp="29680296183236" />
+    <build
+        timestamp="32221311690619"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
 
 </instant-run>

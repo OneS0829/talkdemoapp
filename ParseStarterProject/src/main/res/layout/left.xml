@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/avatar_chat_left"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/profilepic" />
 
     <TextView
         android:id="@+id/msgr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/avatar_chat_left"
         android:background="@drawable/textview"
         android:paddingBottom="8dp"
         android:paddingLeft="10dp"
@@ -24,9 +29,12 @@
         android:id="@+id/msg_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_below="@+id/msgr"
+        android:layout_toRightOf="@+id/avatar_chat_left"
+        android:layout_alignLeft="@+id/msgr"
         android:text="AM00:00"
         android:textSize="12sp"
+        android:layout_marginLeft="3dp"
         android:layout_marginBottom="15dp"/>
 
-</LinearLayout>
+</RelativeLayout>
