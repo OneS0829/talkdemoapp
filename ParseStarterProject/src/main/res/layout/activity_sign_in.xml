@@ -156,7 +156,7 @@
             <Button  android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Upload new picture"
-                android:textSize="12sp"
+                android:textSize="9sp"
                 android:layout_column="1"
                 android:onClick="onUpdateProfilePic"
                 android:id="@+id/updateNewPicButton" />

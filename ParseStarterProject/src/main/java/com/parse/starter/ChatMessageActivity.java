@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -45,6 +46,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import static com.parse.ParseQuery.getQuery;
 
@@ -167,6 +170,8 @@ public class ChatMessageActivity extends AppCompatActivity{
                                             final Date date = object.getCreatedAt();
                                             SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
                                             SimpleDateFormat df2 = new SimpleDateFormat("h:mm a");
+                                            df.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+                                            df2.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
                                             String reportDate = df.format(date);
                                             final String reportDate2 = df2.format(date);
                                             currentDay = date.getDay();
@@ -215,6 +220,22 @@ public class ChatMessageActivity extends AppCompatActivity{
         if (MainActivity.debugMsg == true) Log.i("Activity State", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_message);
+
+        Intent intent = getIntent();
+        opponentName = intent.getStringExtra("opponentName");
+        userName = ParseUser.getCurrentUser().getUsername();
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
+        parseQuery.whereEqualTo("username",opponentName);
+        parseQuery.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                if(e == null) {
+                    setTitle(object.getString("nickname"));
+                }
+            }
+        });
+
+
         chatEditText = (EditText) findViewById(R.id.chatEditText);
         chatEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -231,12 +252,6 @@ public class ChatMessageActivity extends AppCompatActivity{
 
         messageListView = (ListView) findViewById(R.id.chatContentListView);
         chatArrayAdapter = new ChatArrayAdapter(getApplicationContext(), R.layout.right);
-
-        Intent intent = getIntent();
-        opponentName = intent.getStringExtra("opponentName");
-        userName = ParseUser.getCurrentUser().getUsername();
-        setTitle(opponentName);
-
 
         messageListView.setAdapter(chatArrayAdapter);
         messageArrayList.clear();
@@ -297,14 +312,31 @@ public class ChatMessageActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
+        Intent intent = new Intent();
 
         switch (item.getItemId()) {
             case R.id.logout:
 
                 if(MainActivity.debugMsg == true) Log.i("Menu item selected", "Logout");
-                Intent intent = new Intent();
                 ParseUser.logOut();
                 intent.setClass(ChatMessageActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                return true;
+
+            case R.id.profile:
+
+                if(MainActivity.debugMsg == true) Log.i("Menu item selected", "Profile");
+                intent.setClass(ChatMessageActivity.this, ProfileActivity.class);
+                intent.putExtra("username",userName);
+                startActivity(intent);
+
+                return true;
+
+            case R.id.userList:
+
+                intent.setClass(ChatMessageActivity.this, UsersListActivity.class);
+                intent.putExtra("username",userName);
                 startActivity(intent);
 
                 return true;

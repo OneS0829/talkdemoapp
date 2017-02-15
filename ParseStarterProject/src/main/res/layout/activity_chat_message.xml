@@ -1,71 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-<RelativeLayout
-    android:id="@+id/activity_chat_message"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.parse.starter.ChatMessageActivity">
+    android:orientation="vertical">
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/chatContentListView"
+        android:divider="@null"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"/>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/llMsgCompose"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="427dp"
-            android:id="@+id/chatContentListView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:divider="@null"
-            android:transcriptMode="alwaysScroll"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/chatEditAreaLinearLayout"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/chatContentListView"
-            android:weightSum="6">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/chatEditText"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="input message here..."
-                android:layout_weight="5"/>
+                android:hint="input message here..." />
 
-            <ImageButton
+            <Button
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:srcCompat="@drawable/sendicon"
+                android:text="Send"
                 android:id="@+id/imageButton"
-                android:saveEnabled="false"
-                android:scaleType="fitCenter"
-                android:background="@android:color/darker_gray"
                 android:onClick="onSendMessage"
                 android:layout_weight="1"/>
 
         </LinearLayout>
-    </LinearLayout>
 
-</RelativeLayout>
-</ScrollView>
+</LinearLayout>
