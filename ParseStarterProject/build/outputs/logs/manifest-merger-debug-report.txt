@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:9:1-41:12
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:9:1-42:12
 	package
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:10:5-32
 		INJECTED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml
@@ -59,7 +59,7 @@ ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\s
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:17:22-70
 application
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:19:5-39:19
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:19:5-40:19
 MERGED from [com.google.android.gms:play-services:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services\9.4.0\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.4.0\AndroidManifest.xml:24:5-32:19
 MERGED from [com.google.android.gms:play-services-analytics:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.4.0\AndroidManifest.xml:27:5-20
@@ -142,9 +142,13 @@ ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\s
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:36:13-48
 activity#com.parse.starter.SignInActivity
-ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:38:9-61
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:38:9-52
 	android:name
 		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:38:19-49
+activity#com.parse.starter.ProfileActivity
+ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:39:9-62
+	android:name
+		ADDED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml:39:19-50
 uses-sdk
 INJECTED from C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services:9.4.0] C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services\9.4.0\AndroidManifest.xml:4:5-42

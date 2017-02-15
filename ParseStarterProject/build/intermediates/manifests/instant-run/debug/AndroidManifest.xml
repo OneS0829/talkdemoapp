@@ -58,6 +58,7 @@
             android:name="com.parse.starter.ChatMessageActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.parse.starter.SignInActivity" />
+        <activity android:name="com.parse.starter.ProfileActivity" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

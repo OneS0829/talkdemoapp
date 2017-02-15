@@ -2,6 +2,8 @@ package com.parse.starter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -13,18 +15,23 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -32,6 +39,10 @@ import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -84,8 +95,11 @@ public class ChatMessageActivity extends AppCompatActivity{
 
     }
 
+
     public void onUpdateMessage()
     {
+        final Bitmap[] userBitmap = new Bitmap[1];
+        final Bitmap[] friendBitmap = new Bitmap[1];
         ParseQuery<ParseObject> parseQueryCurrectUserToOpponent = new ParseQuery<ParseObject>("message");
         ParseQuery<ParseObject> parseQueryOpponentToCurrectUser = new ParseQuery<ParseObject>("message");
 
@@ -97,59 +111,102 @@ public class ChatMessageActivity extends AppCompatActivity{
         List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
         queries.add(parseQueryCurrectUserToOpponent);
         queries.add(parseQueryOpponentToCurrectUser);
-        ParseQuery<ParseObject> query = ParseQuery.or(queries);
+        final ParseQuery<ParseObject> query = ParseQuery.or(queries);
         query.orderByAscending("createdAt");
 
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
+        String[] names = {userName, opponentName};
+        parseQuery.whereContainedIn("username", Arrays.asList(names));
+        parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                if(e == null) {
-                    if(objects.size() > 0) {
-                        int currentMessageCount = 0;
-                        int currentDay = 0;
-                        int currentMonth = 0;
-                        int currentYear = 0;
 
-                        for(ParseObject object : objects) {
-
-                            currentMessageCount++;
-                            Date date = object.getCreatedAt();
-                            SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
-                            SimpleDateFormat df2 = new SimpleDateFormat("h:mm a");
-                            String reportDate = df.format(date);
-                            String reportDate2 = df2.format(date);
-                            currentDay = date.getDay();
-                            currentMonth = date.getMonth();
-                            currentYear = date.getYear();
-
-                            if(currentYear >= beforeYear && currentMonth >= beforeMonth && currentDay > beforeDay)
+                if(e == null)
+                {
+                    if(objects.size() > 0)
+                    {
+                        for(ParseObject object : objects)
+                        {
+                            if(object.getString("username").equals(userName))
                             {
-                                type = 2;
-                                chatArrayAdapter.add(new ChatMessage(type, reportDate, null));
-                                beforeDay = currentDay;
-                                beforeMonth = currentMonth;
-                                beforeYear = currentYear;
-                            }
-
-                            if(currentMessageCount > beforeMessageCount)
-                            {
-                                //chatArrayAdapter.add(new ChatMessage(2, reportDate));
-                                String messageContent = object.getString("message");
-                                type = 0; //user
-                                if(object.get("sender").toString().equals(opponentName))
-                                {
-                                    type = 1;
+                                ParseFile file = (ParseFile) object.get("profilepic");
+                                try {
+                                    byte[] data = file.getData();
+                                    userBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                } catch (ParseException e1) {
+                                    e1.printStackTrace();
                                 }
-                                chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2));
-                                beforeMessageCount++;
-                                chatArrayAdapter.notifyDataSetChanged();
-                                messageListView.setSelection(messageArrayList.size()-1);
+
+                            }
+                            else if(object.getString("username").equals(opponentName))
+                            {
+                                ParseFile file = (ParseFile) object.get("profilepic");
+                                try {
+                                    byte[] data = file.getData();
+                                    friendBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                } catch (ParseException e1) {
+                                    e1.printStackTrace();
+                                }
                             }
                         }
+
+
+                        query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> objects, ParseException e) {
+                                if(e == null) {
+                                    if(objects.size() > 0) {
+                                        int currentMessageCount = 0;
+                                        int currentDay = 0;
+                                        int currentMonth = 0;
+                                        int currentYear = 0;
+
+                                        for(ParseObject object : objects) {
+
+                                            currentMessageCount++;
+                                            final Date date = object.getCreatedAt();
+                                            SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
+                                            SimpleDateFormat df2 = new SimpleDateFormat("h:mm a");
+                                            String reportDate = df.format(date);
+                                            final String reportDate2 = df2.format(date);
+                                            currentDay = date.getDay();
+                                            currentMonth = date.getMonth();
+                                            currentYear = date.getYear();
+
+                                            if(currentYear >= beforeYear && currentMonth >= beforeMonth && currentDay > beforeDay)
+                                            {
+                                                type = 2;
+                                                chatArrayAdapter.add(new ChatMessage(type, reportDate, null, null, null));
+                                                beforeDay = currentDay;
+                                                beforeMonth = currentMonth;
+                                                beforeYear = currentYear;
+                                            }
+                                            if(currentMessageCount > beforeMessageCount)
+                                            {
+                                                final String messageContent = object.getString("message");
+                                                type = 0; //user
+                                                if(object.get("sender").toString().equals(opponentName))
+                                                {
+                                                    type = 1;
+                                                }
+                                                if(type == 0) chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, userBitmap[0]));
+                                                else if(type == 1) chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, friendBitmap[0]));
+                                                beforeMessageCount++;
+                                                messageListView.setSelection(messageArrayList.size()-1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+
                     }
                 }
             }
         });
+
+
 
     }
 
@@ -179,6 +236,7 @@ public class ChatMessageActivity extends AppCompatActivity{
         opponentName = intent.getStringExtra("opponentName");
         userName = ParseUser.getCurrentUser().getUsername();
         setTitle(opponentName);
+
 
         messageListView.setAdapter(chatArrayAdapter);
         messageArrayList.clear();
@@ -210,7 +268,6 @@ public class ChatMessageActivity extends AppCompatActivity{
             while(messageUpdateActive){
                 try {
                     Thread.sleep(1000);
-                    //Log.i("Update","Message Updating.....");
                     Message message = new Message();
                     mHandler.handleMessage(message);
 

@@ -36,9 +36,6 @@ public class UsersListActivity extends AppCompatActivity {
     {
         if(MainActivity.debugMsg == true) Log.i("onShowUserView","Entry");
 
-
-
-
         ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
         parseQuery.whereNotEqualTo("username",userName);
         parseQuery.findInBackground(new FindCallback<ParseUser>() {
@@ -60,12 +57,13 @@ public class UsersListActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
         Intent intent = getIntent();
-        userName = intent.getStringExtra("username");
+        userName = ParseUser.getCurrentUser().getUsername();
 
         //String passWord = intent.getStringExtra("password");
         usersListView = (ListView)findViewById(R.id.usersListView);
@@ -115,14 +113,23 @@ public class UsersListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
+        Intent intent = new Intent();
 
         switch (item.getItemId()) {
             case R.id.logout:
 
                 if(MainActivity.debugMsg == true) Log.i("Menu item selected", "Logout");
-                Intent intent = new Intent();
                 ParseUser.logOut();
                 intent.setClass(UsersListActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                return true;
+
+            case R.id.profile:
+
+                if(MainActivity.debugMsg == true) Log.i("Menu item selected", "Profile");
+                intent.setClass(UsersListActivity.this, ProfileActivity.class);
+                intent.putExtra("username",userName);
                 startActivity(intent);
 
                 return true;

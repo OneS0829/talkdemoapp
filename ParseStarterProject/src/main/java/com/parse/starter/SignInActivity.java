@@ -40,8 +40,8 @@ public class SignInActivity extends AppCompatActivity {
     Bitmap bitmap;
     ParseUser parseUser;
     Bundle myBundle;
-
     ImageView profilePicImageView;
+
     public void onSignIn(View view)
     {
         String confirmPW = confirmPasswordEditText.getText().toString();

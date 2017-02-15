@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ class ChatArrayAdapter extends ArrayAdapter<ChatMessage> {
     private TextView chatText;
     private TextView dateText;
     private TextView timeText;
+    private ImageView profilePicImageView;
     private List<ChatMessage> chatMessageList = new ArrayList<ChatMessage>();
     private Context context;
 
@@ -43,17 +45,23 @@ class ChatArrayAdapter extends ArrayAdapter<ChatMessage> {
         View row = convertView;
         LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (chatMessageObj.type == 0) {
+            //Log.i("Who","User"+chatMessageObj.msgTime);
             row = inflater.inflate(R.layout.right, parent, false);
             chatText = (TextView) row.findViewById(R.id.msgr);
             chatText.setText(chatMessageObj.message);
             timeText = (TextView) row.findViewById(R.id.msg_time);
             timeText.setText(chatMessageObj.msgTime);
+            profilePicImageView = (ImageView)row.findViewById(R.id.avatar_chat_right);
+            profilePicImageView.setImageBitmap(chatMessageObj.profilePic);
         }else if(chatMessageObj.type == 1){
+            //Log.i("Who","Friend"+chatMessageObj.msgTime);
             row = inflater.inflate(R.layout.left, parent, false);
             chatText = (TextView) row.findViewById(R.id.msgr);
             chatText.setText(chatMessageObj.message);
             timeText = (TextView) row.findViewById(R.id.msg_time);
             timeText.setText(chatMessageObj.msgTime);
+            profilePicImageView = (ImageView)row.findViewById(R.id.avatar_chat_left);
+            profilePicImageView.setImageBitmap(chatMessageObj.profilePic);
         }
         else if(chatMessageObj.type == 2){
             row = inflater.inflate(R.layout.date, parent, false);

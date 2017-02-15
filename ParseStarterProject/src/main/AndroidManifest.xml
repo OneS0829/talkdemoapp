@@ -35,7 +35,8 @@
         <activity
             android:name=".ChatMessageActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
