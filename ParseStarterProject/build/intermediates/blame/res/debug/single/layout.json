@@ -76,6 +76,10 @@
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
+        "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\layout\\custom_imageview.xml",
+        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\src\\main\\res\\layout\\custom_imageview.xml"
+    },
+    {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_prediction.xml",
         "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\9.4.0\\res\\layout\\place_autocomplete_item_prediction.xml"
     },

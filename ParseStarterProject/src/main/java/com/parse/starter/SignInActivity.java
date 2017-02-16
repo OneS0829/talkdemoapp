@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -91,6 +92,13 @@ public class SignInActivity extends AppCompatActivity {
                         object.put("username",idEditText.getText().toString());
                         object.put("nickname",nickNameEditText.getText().toString());
                         object.put("status",statusEditText.getText().toString());
+
+                        SharedPreferences sharedPreferences;
+                        sharedPreferences = getSharedPreferences("Data",0);
+                        sharedPreferences.edit()
+                                .putString("username",idEditText.getText().toString())
+                                .commit();
+
                         object.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {

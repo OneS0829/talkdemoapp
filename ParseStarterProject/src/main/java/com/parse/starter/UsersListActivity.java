@@ -1,21 +1,30 @@
 package com.parse.starter;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -55,17 +64,19 @@ public class UsersListActivity extends AppCompatActivity {
                           parseQuery2.whereEqualTo("username",object.getString("username"));
                           parseQuery2.getFirstInBackground(new GetCallback<ParseObject>() {
                               @Override
-                              public void done(ParseObject object, ParseException e) {
+                              public void done(final ParseObject object, ParseException e) {
                                   if(e == null) {
-                                      Bitmap bitmap = null;
-                                      ParseFile file = (ParseFile) object.get("profilepic");
-                                      try {
-                                          byte[] data = file.getData();
-                                          bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                          userListArrayAdapter.add(new UserInfomation(object.getString("username"), object.getString("nickname"), object.getString("status"), bitmap));
-                                      } catch (ParseException e1) {
-                                          e1.printStackTrace();
-                                      }
+                                      final ParseFile file = (ParseFile) object.get("profilepic");
+                                      file.getDataInBackground(new GetDataCallback() {
+                                          @Override
+                                          public void done(byte[] data, ParseException e) {
+                                              if(e == null)
+                                              {
+                                                  Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                  userListArrayAdapter.add(new UserInfomation(object.getString("username"), object.getString("nickname"), object.getString("status"), bitmap));
+                                              }
+                                          }
+                                      });
                                   }
                               }
                           });
@@ -80,6 +91,7 @@ public class UsersListActivity extends AppCompatActivity {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +124,11 @@ public class UsersListActivity extends AppCompatActivity {
             }
         });
 
+        setTitle("");
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        final LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
         parseQuery.whereEqualTo("username",userName);
         parseQuery.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -119,11 +136,30 @@ public class UsersListActivity extends AppCompatActivity {
             public void done(ParseObject object, ParseException e) {
                 if(e == null)
                 {
-                    String user_nickName = object.getString("nickname");
-                    setTitle(user_nickName +"(Login)");
+                    final String user_nickName = object.getString("nickname");
+                    ParseFile file = (ParseFile) object.get("profilepic");
+
+                    file.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+
+                            ImageView profilePicImageView;
+                            TextView nicknameTextView;
+                            View v = inflator.inflate(R.layout.custom_imageview, null);
+                            nicknameTextView = (TextView) v.findViewById(R.id.user_name);
+                            nicknameTextView.setText(user_nickName);
+                            profilePicImageView = (ImageView)v.findViewById(R.id.user_profilepic);
+                            profilePicImageView.setImageBitmap(bitmap);
+                            actionBar.setCustomView(v);
+                        }
+                    });
                 }
             }
+
+
         });
+
 
         onShowUserView();
     }

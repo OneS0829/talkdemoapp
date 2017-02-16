@@ -9,6 +9,7 @@
 package com.parse.starter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     TextView changeModeTextView;
     Button loginOrSignInButton;
     ParseUser parseUser;
+    SharedPreferences sharedPreferences;
 
   boolean loginFlag = true; // true for login, false for sign in
 
@@ -86,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent();
                             intent.setClass(MainActivity.this, UsersListActivity.class);
                             intent.putExtra("username", userName);
+                            sharedPreferences.edit()
+                                             .putString("username",userName)
+                                             .commit();
                             //intent.putExtra("password", passWord);
                             startActivity(intent);
                         }
@@ -119,8 +124,13 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    sharedPreferences = getSharedPreferences("Data",0);
+    String userNameField = sharedPreferences.getString("username","");
+
     loginFlag = true;
     userNameEditText = (EditText)findViewById(R.id.userNameEditText);
+    userNameEditText.setText(userNameField);
+
     passWordEditText = (EditText)findViewById(R.id.passWordEditText);
     changeModeTextView = (TextView)findViewById(R.id.changeModeTextView);
     loginOrSignInButton = (Button)findViewById(R.id.loginOrSignInButton);

@@ -5,29 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="123071674764073"
+    timestamp="8306021675184"
     token="4489593741132417195"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1659" />
+        duration="2504" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1131" />
+        duration="2523" />
     <task
         name="verifier"
-        duration="1490" />
+        duration="1717" />
 
     <artifact
         location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="123071674764073"
+        timestamp="8306021675184"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\OneS\AndroidStudioProjects\talkdemoapp\ParseStarterProject\build\outputs\apk\ParseStarterProject-debug.apk"
