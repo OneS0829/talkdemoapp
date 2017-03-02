@@ -168,17 +168,29 @@ public class ChatMessageActivity extends AppCompatActivity{
 
                                             currentMessageCount++;
                                             final Date date = object.getCreatedAt();
+
                                             SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
                                             SimpleDateFormat df2 = new SimpleDateFormat("h:mm a");
+
+                                            SimpleDateFormat df_day = new SimpleDateFormat("dd");
+                                            SimpleDateFormat df_month = new SimpleDateFormat("MM");
+                                            SimpleDateFormat df_year = new SimpleDateFormat("yyyy");
+
+
                                             df.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
                                             df2.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+                                            df_day.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+                                            df_month.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+                                            df_year.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+
                                             String reportDate = df.format(date);
                                             final String reportDate2 = df2.format(date);
-                                            currentDay = date.getDay();
-                                            currentMonth = date.getMonth();
-                                            currentYear = date.getYear();
 
-                                            if(currentYear >= beforeYear && currentMonth >= beforeMonth && currentDay > beforeDay)
+                                            currentDay = Integer.parseInt(df_day.format(date));
+                                            currentMonth = Integer.parseInt(df_month.format(date));
+                                            currentYear = Integer.parseInt(df_year.format(date));
+
+                                            if((currentYear > beforeYear) || (currentYear == beforeYear && currentMonth > beforeMonth) || (currentYear == beforeYear && currentMonth == beforeMonth && currentDay > beforeDay))
                                             {
                                                 type = 2;
                                                 chatArrayAdapter.add(new ChatMessage(type, reportDate, null, null, null));
