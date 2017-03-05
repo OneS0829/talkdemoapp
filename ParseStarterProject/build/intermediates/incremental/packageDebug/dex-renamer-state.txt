@@ -1,7 +1,7 @@
-#Thu Mar 02 04:04:21 CST 2017
-base.0=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_964385d7305b8f55fc8cf3ebc6b7a0135c702b59
+#Mon Mar 06 02:16:31 CST 2017
+base.0=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_964385d7305b8f55fc8cf3ebc6b7a0135c702b59
 renamed.1=classes.dex
 renamed.0=classes2.dex
-file.1=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_44c61d1453f19c94c2084ba8df2ab7aea7a4b5f0\\classes.dex
-base.1=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_44c61d1453f19c94c2084ba8df2ab7aea7a4b5f0
-file.0=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_964385d7305b8f55fc8cf3ebc6b7a0135c702b59\\classes.dex
+file.1=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_44c61d1453f19c94c2084ba8df2ab7aea7a4b5f0\\classes.dex
+base.1=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_44c61d1453f19c94c2084ba8df2ab7aea7a4b5f0
+file.0=C\:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_964385d7305b8f55fc8cf3ebc6b7a0135c702b59\\classes.dex

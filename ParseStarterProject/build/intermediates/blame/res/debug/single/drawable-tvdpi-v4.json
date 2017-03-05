@@ -1,150 +1,150 @@
 [
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\ic_plusone_tall_off_client.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\9.4.0\\res\\drawable-tvdpi-v4\\ic_plusone_tall_off_client.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\92a5d0e81158d11636734dc5e9586bb7ae2c9006\\output\\res\\drawable-tvdpi-v4\\ic_plusone_tall_off_client.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_full_open_on_phone.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_full_open_on_phone.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_full_open_on_phone.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\ic_plusone_medium_off_client.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\9.4.0\\res\\drawable-tvdpi-v4\\ic_plusone_medium_off_client.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\92a5d0e81158d11636734dc5e9586bb7ae2c9006\\output\\res\\drawable-tvdpi-v4\\ic_plusone_medium_off_client.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_dark_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\ic_plusone_standard_off_client.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\9.4.0\\res\\drawable-tvdpi-v4\\ic_plusone_standard_off_client.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\92a5d0e81158d11636734dc5e9586bb7ae2c9006\\output\\res\\drawable-tvdpi-v4\\ic_plusone_standard_off_client.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_light_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\ic_plusone_small_off_client.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-plus\\9.4.0\\res\\drawable-tvdpi-v4\\ic_plusone_small_off_client.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\92a5d0e81158d11636734dc5e9586bb7ae2c9006\\output\\res\\drawable-tvdpi-v4\\ic_plusone_small_off_client.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_icon_light_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_light_normal.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_focused.9.png"
     },
     {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png",
-        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png"
+        "source": "C:\\Users\\OneS\\.android\\build-cache\\47a8842b2e45aa149f6b61f1e5ce5a6f7c93fa17\\output\\res\\drawable-tvdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png"
     }
 ]
