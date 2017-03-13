@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +34,12 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import static com.parse.ParseQuery.getQuery;
 
@@ -45,49 +52,57 @@ public class UsersListActivity extends AppCompatActivity {
     ListView usersListView;
     String userName;
 
+    Thread userListUpdateThread;
+    boolean userListUpdateActive = false;
+
+    public void updateUserListView()
+    {
+        userListArrayAdapter.updateUserList();
+    }
+
     public void onShowUserView()
     {
         if(MainActivity.debugMsg == true) Log.i("onShowUserView","Entry");
 
-        ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
+        final Bitmap[] resizeBitmap = new Bitmap[1];
+        final int[] unreadMsgNumber = {0};
+
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
         parseQuery.whereNotEqualTo("username",userName);
-        parseQuery.findInBackground(new FindCallback<ParseUser>() {
+        parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void done(List<ParseUser> objects, ParseException e) {
-                  if(e == null)
-                  {
-                      for(ParseUser object : objects)
-                      {
-                          //usersArrayList.add(object.getString("username"));
-                          //if(MainActivity.debugMsg == true) Log.i("onShowUserView",object.getString("username"));
-                          ParseQuery<ParseObject> parseQuery2 = ParseQuery.getQuery("UserProfile");
-                          parseQuery2.whereEqualTo("username",object.getString("username"));
-                          parseQuery2.getFirstInBackground(new GetCallback<ParseObject>() {
-                              @Override
-                              public void done(final ParseObject object, ParseException e) {
-                                  if(e == null) {
-                                      final ParseFile file = (ParseFile) object.get("profilepic");
-                                      file.getDataInBackground(new GetDataCallback() {
-                                          @Override
-                                          public void done(byte[] data, ParseException e) {
-                                              if(e == null)
-                                              {
-                                                  Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                                  userListArrayAdapter.add(new UserInfomation(object.getString("username"), object.getString("nickname"), object.getString("status"), bitmap));
-                                              }
-                                          }
-                                      });
-                                  }
-                              }
-                          });
-                      }
-                      userListArrayAdapter.notifyDataSetChanged();
-                  }
-                  else{
-                      if(MainActivity.debugMsg == true) Log.i("Error", e.toString());
-                  }
+            public void done(List<ParseObject> objects, ParseException e) {
+                if(e == null)
+                {
+                    for (final ParseObject object : objects) {
+                        final ParseFile file = (ParseFile) object.get("profilepic");
+                        file.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                resizeBitmap[0] = zoomBitmap(bitmap, 100, 100);
+                                userListArrayAdapter.add(new UserInfomation(object.getString("username"), object.getString("nickname"), object.getString("status"), resizeBitmap[0], "No message...", "", 0));
+
+                            }
+                        });
+                    }
+                    userListUpdateThread.start();
+                }
             }
         });
+
+
+    }
+
+    public static Bitmap zoomBitmap(Bitmap bitmap, int width, int height) {
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        float scaleWidth = ((float) width / w);
+        float scaleHeight = ((float) height / h);
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+        return newbmp;
     }
 
 
@@ -95,6 +110,9 @@ public class UsersListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(MainActivity.debugMsg == true) Log.i("Activity State","onCreate");
+
         setContentView(R.layout.activity_users_list);
         Intent intent = getIntent();
         userName = ParseUser.getCurrentUser().getUsername();
@@ -160,9 +178,61 @@ public class UsersListActivity extends AppCompatActivity {
 
         });
 
+        userListUpdateThread = new UsersListActivity.userListUpdateThread();
+        userListUpdateActive = true;
 
         onShowUserView();
+
+        Log.i("Test","Out Loop");
     }
+
+    class userListUpdateThread extends Thread {
+
+        @Override
+        public void run() {
+            super.run();
+            while(true){
+                try {
+                    Message message = new Message();
+                    if(userListUpdateActive == true) {
+                        mHandler.sendMessage(message);
+                        //Log.i("Thread","Going...");
+                    }
+                    Thread.sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            updateUserListView();
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        if(MainActivity.debugMsg == true) Log.i("Activity State","onPause");
+        super.onPause();
+
+        if (userListUpdateThread != null) {
+            userListUpdateActive = false;
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        if(MainActivity.debugMsg == true) Log.i("Activity State","onRestart");
+        super.onRestart();
+
+        if (userListUpdateThread != null) {
+            userListUpdateActive = true;
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

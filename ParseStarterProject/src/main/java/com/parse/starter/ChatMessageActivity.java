@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -80,6 +81,7 @@ public class ChatMessageActivity extends AppCompatActivity{
          parseObject.put("recipient", recipient);
          parseObject.put("sender", sender);
          parseObject.put("message", message);
+         parseObject.put("status", false);  // false: Unread, true: Read
 
          chatEditText.setText("");
 
@@ -98,11 +100,26 @@ public class ChatMessageActivity extends AppCompatActivity{
 
     }
 
+    public static Bitmap zoomBitmap(Bitmap bitmap, int width, int height) {
+         int w = bitmap.getWidth();
+         int h = bitmap.getHeight();
+         Matrix matrix = new Matrix();
+         float scaleWidth = ((float) width / w);
+         float scaleHeight = ((float) height / h);
+         matrix.postScale(scaleWidth, scaleHeight);
+         Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+         return newbmp;
+    }
 
     public void onUpdateMessage()
     {
         final Bitmap[] userBitmap = new Bitmap[1];
         final Bitmap[] friendBitmap = new Bitmap[1];
+        final Bitmap[] resizeUserBitmap = new Bitmap[1];
+        final Bitmap[] resizeFriendBitmap = new Bitmap[1];
+        final boolean[] friendBitmapFlag = {false};
+        final boolean[] appUserBitmapFlag = {false};
+
         ParseQuery<ParseObject> parseQueryCurrectUserToOpponent = new ParseQuery<ParseObject>("message");
         ParseQuery<ParseObject> parseQueryOpponentToCurrectUser = new ParseQuery<ParseObject>("message");
 
@@ -130,26 +147,64 @@ public class ChatMessageActivity extends AppCompatActivity{
                     {
                         for(ParseObject object : objects)
                         {
-                            if(object.getString("username").equals(userName))
+                            if(object.getString("username").equals(userName) && appUserBitmapFlag[0] == false)
                             {
-                                ParseFile file = (ParseFile) object.get("profilepic");
-                                try {
-                                    byte[] data = file.getData();
-                                    userBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                } catch (ParseException e1) {
-                                    e1.printStackTrace();
-                                }
-
+                                /*
+                                                                                ParseFile file = (ParseFile) object.get("profilepic");
+                                                                                try {
+                                                                                    byte[] data = file.getData();
+                                                                                    userBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                                                    resizeUserBitmap[0] = zoomBitmap(userBitmap[0],100,100);
+                                                                                    appUserBitmapFlag[0] = true;
+                                                                                } catch (ParseException e1) {
+                                                                                    e1.printStackTrace();
+                                                                                }
+                                                                 */
+                                final ParseFile file = (ParseFile) object.get("profilepic");
+                                file.getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, ParseException e) {
+                                        if(e == null)
+                                        {
+                                            try {
+                                                data = file.getData();
+                                                userBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                resizeUserBitmap[0] = zoomBitmap(userBitmap[0],100,100);
+                                                appUserBitmapFlag[0] = true;
+                                            } catch (ParseException e1) {
+                                                e1.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                });
                             }
-                            else if(object.getString("username").equals(opponentName))
+                            else if(object.getString("username").equals(opponentName) && friendBitmapFlag[0] == false)
                             {
-                                ParseFile file = (ParseFile) object.get("profilepic");
-                                try {
-                                    byte[] data = file.getData();
-                                    friendBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                } catch (ParseException e1) {
-                                    e1.printStackTrace();
-                                }
+                                /*
+                                                                        ParseFile file = (ParseFile) object.get("profilepic");
+                                                                        try {
+                                                                            byte[] data = file.getData();
+                                                                            friendBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                                            resizeFriendBitmap[0] = zoomBitmap(friendBitmap[0], 100, 100);
+                                                                            friendBitmapFlag[0] = true;
+                                                                        } catch (ParseException e1) {
+                                                                            e1.printStackTrace();
+                                                                        }
+                                                                 */
+                                final ParseFile file = (ParseFile) object.get("profilepic");
+                                file.getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, ParseException e) {
+                                        try {
+                                            data = file.getData();
+                                            friendBitmap[0] = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                            resizeFriendBitmap[0] = zoomBitmap(friendBitmap[0], 100, 100);
+                                            friendBitmapFlag[0] = true;
+                                        } catch (ParseException e1) {
+                                            e1.printStackTrace();
+                                        }
+                                    }
+                                });
                             }
                         }
 
@@ -193,7 +248,7 @@ public class ChatMessageActivity extends AppCompatActivity{
                                             if((currentYear > beforeYear) || (currentYear == beforeYear && currentMonth > beforeMonth) || (currentYear == beforeYear && currentMonth == beforeMonth && currentDay > beforeDay))
                                             {
                                                 type = 2;
-                                                chatArrayAdapter.add(new ChatMessage(type, reportDate, null, null, null));
+                                                chatArrayAdapter.add(new ChatMessage(type, reportDate, null, null, null, null, null));
                                                 beforeDay = currentDay;
                                                 beforeMonth = currentMonth;
                                                 beforeYear = currentYear;
@@ -201,16 +256,29 @@ public class ChatMessageActivity extends AppCompatActivity{
                                             if(currentMessageCount > beforeMessageCount)
                                             {
                                                 final String messageContent = object.getString("message");
+                                                final Boolean messageStatus = object.getBoolean("status");
+                                                final String messageId = object.getObjectId();
+
                                                 type = 0; //user
                                                 if(object.get("sender").toString().equals(opponentName))
                                                 {
                                                     type = 1;
                                                 }
-                                                if(type == 0) chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, userBitmap[0]));
-                                                else if(type == 1) chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, friendBitmap[0]));
+                                                if(type == 0) {
+                                                    //Log.i("Bitmap size width",String.valueOf(userBitmap[0].getWidth()));
+                                                    //Log.i("Bitmap size height",String.valueOf(userBitmap[0].getHeight()));
+
+                                                    //Log.i("Bitmap size width",String.valueOf(resizeBitmap.getWidth()));
+                                                    //Log.i("Bitmap size height",String.valueOf(resizeBitmap.getHeight()));
+                                                    chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, resizeUserBitmap[0], messageStatus, messageId));
+                                                }
+                                                else if(type == 1) {
+                                                    chatArrayAdapter.add(new ChatMessage(type, messageContent, reportDate2, date, resizeFriendBitmap[0], messageStatus, messageId));
+                                                }
                                                 beforeMessageCount++;
                                                 messageListView.setSelection(messageArrayList.size()-1);
                                             }
+
                                         }
                                     }
                                 }
@@ -223,9 +291,9 @@ public class ChatMessageActivity extends AppCompatActivity{
             }
         });
 
-
-
+        chatArrayAdapter.checkHasUnReadMessage();
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,6 +303,7 @@ public class ChatMessageActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         opponentName = intent.getStringExtra("opponentName");
+
         userName = ParseUser.getCurrentUser().getUsername();
         ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("UserProfile");
         parseQuery.whereEqualTo("username",opponentName);
@@ -264,6 +333,7 @@ public class ChatMessageActivity extends AppCompatActivity{
 
         messageListView = (ListView) findViewById(R.id.chatContentListView);
         chatArrayAdapter = new ChatArrayAdapter(getApplicationContext(), R.layout.right);
+        chatArrayAdapter.setFriend(opponentName);
 
         messageListView.setAdapter(chatArrayAdapter);
         messageArrayList.clear();
@@ -294,9 +364,9 @@ public class ChatMessageActivity extends AppCompatActivity{
             super.run();
             while(messageUpdateActive){
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                     Message message = new Message();
-                    mHandler.handleMessage(message);
+                    mHandler.sendMessage(message);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -309,6 +379,7 @@ public class ChatMessageActivity extends AppCompatActivity{
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             onUpdateMessage();
+            //chatArrayAdapter.notifyDataSetChanged();
         }
     };
 

@@ -140,6 +140,10 @@
         "source": "C:\\Users\\OneS\\.android\\build-cache\\778de07feda8553addb8a47d61b4352e2fee1528\\output\\res\\drawable\\cast_ic_expanded_controller_rewind30.xml"
     },
     {
+        "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_circle_red.xml",
+        "source": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\src\\main\\res\\drawable\\shape_circle_red.xml"
+    },
+    {
         "merged": "C:\\Users\\OneS\\AndroidStudioProjects\\talkdemoapp\\ParseStarterProject\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_settings_light.xml",
         "source": "C:\\Users\\OneS\\.android\\build-cache\\44a8fe52d49bf21c3559092d3bf8cff86dfc7f3d\\output\\res\\drawable\\mr_ic_settings_light.xml"
     },

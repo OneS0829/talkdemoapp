@@ -3113,7 +3113,7 @@ containing a value of this type.
         public static final int mr_ic_play_light=0x7f0200c5;
         public static final int mr_ic_settings_dark=0x7f0200c6;
         public static final int mr_ic_settings_light=0x7f0200c7;
-        public static final int notification_template_icon_bg=0x7f0200f9;
+        public static final int notification_template_icon_bg=0x7f0200fa;
         public static final int places_ic_clear=0x7f0200c8;
         public static final int places_ic_search=0x7f0200c9;
         public static final int powered_by_google_dark=0x7f0200ca;
@@ -3160,9 +3160,10 @@ containing a value of this type.
         public static final int quantum_ic_volume_off_grey600_36=0x7f0200f3;
         public static final int quantum_ic_volume_off_white_36=0x7f0200f4;
         public static final int sendicon=0x7f0200f5;
-        public static final int talkappdemologo=0x7f0200f6;
-        public static final int textview=0x7f0200f7;
-        public static final int textview2=0x7f0200f8;
+        public static final int shape_circle_red=0x7f0200f6;
+        public static final int talkappdemologo=0x7f0200f7;
+        public static final int textview=0x7f0200f8;
+        public static final int textview2=0x7f0200f9;
     }
     public static final class id {
         public static final int action0=0x7f0e00f3;
@@ -3304,7 +3305,7 @@ containing a value of this type.
         public static final int loading_indicator=0x7f0e00cd;
         public static final int loginOrSignInButton=0x7f0e00ae;
         public static final int logo_only=0x7f0e0069;
-        public static final int logout=0x7f0e010d;
+        public static final int logout=0x7f0e0111;
         public static final int main_container=0x7f0e00bf;
         public static final int match_global_nicknames=0x7f0e0053;
         public static final int match_parent=0x7f0e0062;
@@ -3315,6 +3316,7 @@ containing a value of this type.
         public static final int media_route_volume_slider=0x7f0e00ef;
         public static final int middle=0x7f0e0041;
         public static final int monochrome=0x7f0e0072;
+        public static final int msg_status=0x7f0e0107;
         public static final int msg_time=0x7f0e00e4;
         public static final int msgr=0x7f0e00e3;
         public static final int multiply=0x7f0e002a;
@@ -3339,7 +3341,7 @@ containing a value of this type.
         public static final int plain=0x7f0e004d;
         public static final int play_pause=0x7f0e00ec;
         public static final int production=0x7f0e005c;
-        public static final int profile=0x7f0e010b;
+        public static final int profile=0x7f0e010f;
         public static final int profilePicImageView=0x7f0e00b7;
         public static final int progressBar=0x7f0e00d7;
         public static final int progress_circular=0x7f0e0013;
@@ -3422,14 +3424,17 @@ containing a value of this type.
         public static final int url=0x7f0e004f;
         public static final int useLogo=0x7f0e0028;
         public static final int userInfoRelativeLayout=0x7f0e00a9;
-        public static final int userList=0x7f0e010c;
+        public static final int userList=0x7f0e0110;
         public static final int userNameEditText=0x7f0e00ab;
         public static final int user_name=0x7f0e00e0;
         public static final int user_profilepic=0x7f0e00df;
-        public static final int userlist_image=0x7f0e0108;
-        public static final int userlist_layout=0x7f0e0107;
-        public static final int userlist_nickname=0x7f0e0109;
-        public static final int userlist_status=0x7f0e010a;
+        public static final int userlist_image=0x7f0e0109;
+        public static final int userlist_last_message=0x7f0e010c;
+        public static final int userlist_last_message_time=0x7f0e010d;
+        public static final int userlist_layout=0x7f0e0108;
+        public static final int userlist_linearlayout=0x7f0e010a;
+        public static final int userlist_nickname=0x7f0e010b;
+        public static final int userlist_unread_message_number=0x7f0e010e;
         public static final int usersListView=0x7f0e00be;
         public static final int wide=0x7f0e0058;
         public static final int withText=0x7f0e004b;

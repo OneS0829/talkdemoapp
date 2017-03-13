@@ -10,22 +10,25 @@ import java.util.Date;
  */
 
 public class ChatMessage {
-    //public boolean left;
+
     public int type;   // appUser: 0, friend: 1, date: 2
     public String message;
     public String msgTime;
     public Date dateMsgTime;
     public Bitmap profilePic;
+    public Boolean msgStatus;
+    public String messageId;
 
-    public ChatMessage(int type, String message, String msgTime, Date dataMsgTime, Bitmap profilePic) {
+    public ChatMessage(int type, String message, String msgTime, Date dataMsgTime, Bitmap profilePic, Boolean msgStatus, String messageId) {
         super();
-        //this.left = left;
+
         this.type = type;
         this.message = message;
         this.msgTime = msgTime;
         this.profilePic = profilePic;
         this.dateMsgTime = dataMsgTime;
-        //if(dateMsgTime != null) Log.i("DateMsgTime",dateMsgTime.toString());
+        this.msgStatus = msgStatus;
+        this.messageId = messageId;
     }
 
 
