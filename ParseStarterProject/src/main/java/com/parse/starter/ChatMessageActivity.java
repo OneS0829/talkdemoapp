@@ -1,5 +1,7 @@
 package com.parse.starter;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -64,11 +66,17 @@ public class ChatMessageActivity extends AppCompatActivity{
 
     Thread messageUpdateThread;
     boolean messageUpdateActive = false;
+
+    Thread messageLoadingThread;
+    boolean messageLoadingActive = false;
+
     int beforeMessageCount = 0;
     private int type = 0;
     private int beforeDay = 0;
     private int beforeMonth = 0;
     private int beforeYear = 0;
+
+    Dialog dialog;
 
     public void onSendMessage(View view)
     {
@@ -139,7 +147,8 @@ public class ChatMessageActivity extends AppCompatActivity{
         parseQuery.whereContainedIn("username", Arrays.asList(names));
         parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
+            public void done(List<ParseObject> objects, ParseException e)
+            {
 
                 if(e == null)
                 {
@@ -288,6 +297,9 @@ public class ChatMessageActivity extends AppCompatActivity{
 
                     }
                 }
+
+                dialog.dismiss();
+
             }
         });
 
@@ -339,6 +351,9 @@ public class ChatMessageActivity extends AppCompatActivity{
         messageArrayList.clear();
         beforeMessageCount = 0;
 
+        dialog = ProgressDialog.show(ChatMessageActivity.this,
+                "讀取中", "Wait...",true);
+
         messageUpdateThread = new MessageUpdateThread();
         messageUpdateActive = true;
         messageUpdateThread.start();
@@ -364,7 +379,7 @@ public class ChatMessageActivity extends AppCompatActivity{
             super.run();
             while(messageUpdateActive){
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     Message message = new Message();
                     mHandler.sendMessage(message);
 

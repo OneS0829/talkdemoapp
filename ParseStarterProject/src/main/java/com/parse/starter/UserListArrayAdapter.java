@@ -1,4 +1,6 @@
 package com.parse.starter;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.text.Html;
 import android.util.Log;
@@ -33,6 +35,7 @@ class UserListArrayAdapter extends ArrayAdapter<UserInfomation> {
     private TextView unreadMsgNumberText;
     private List<UserInfomation> userList = new ArrayList<UserInfomation>();
     private Context context;
+    Dialog dialog;
 
     @Override
     public void add(UserInfomation object) {
@@ -76,7 +79,8 @@ class UserListArrayAdapter extends ArrayAdapter<UserInfomation> {
 
             final int finalI = i;
             final int[] countUnread = {0};
-            query.findInBackground(new FindCallback<ParseObject>() {
+            query.findInBackground(new FindCallback<ParseObject>()
+            {
                 @Override
                 public void done(List<ParseObject> objects, ParseException e) {
                     if(e == null) {
@@ -129,7 +133,7 @@ class UserListArrayAdapter extends ArrayAdapter<UserInfomation> {
                                         }
                                     }
 
-                                   if(object.getString("message").equals(userList.get(finalI).lastMsg) && tmp_Date.equals(userList.get(finalI).lastMsgDate)) {
+                                   if(!(object.getString("message").equals(userList.get(finalI).lastMsg) && tmp_Date.equals(userList.get(finalI).lastMsgDate))) {
                                         userList.get(finalI).lastMsg = object.getString("message");
                                         userList.get(finalI).lastMsgDate = tmp_Date;
                                    }
@@ -167,6 +171,7 @@ class UserListArrayAdapter extends ArrayAdapter<UserInfomation> {
         }
 
         this.notifyDataSetChanged();
+
     }
 
     public int getCount() {

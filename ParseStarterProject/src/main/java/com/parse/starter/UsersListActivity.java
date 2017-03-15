@@ -2,6 +2,8 @@ package com.parse.starter;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -51,9 +53,12 @@ public class UsersListActivity extends AppCompatActivity {
     private UserListArrayAdapter userListArrayAdapter;
     ListView usersListView;
     String userName;
+    static ProgressDialog dialog;
 
     Thread userListUpdateThread;
     boolean userListUpdateActive = false;
+    Thread userListLoadingThread;
+    boolean userListLoadingActive = false;
 
     public void updateUserListView()
     {
@@ -86,7 +91,9 @@ public class UsersListActivity extends AppCompatActivity {
                             }
                         });
                     }
+
                     userListUpdateThread.start();
+                    userListLoadingThread.start();
                 }
             }
         });
@@ -121,6 +128,9 @@ public class UsersListActivity extends AppCompatActivity {
         usersListView = (ListView)findViewById(R.id.usersListView);
         usersArrayList.clear();
         userProfileArrayList.clear();
+
+        dialog = ProgressDialog.show(UsersListActivity.this,
+                "讀取中", "Wait...",true);
 
         //arrayAdapter = new ArrayAdapter(UsersListActivity.this, android.R.layout.simple_list_item_1, usersArrayList);
         //usersListView.setAdapter(arrayAdapter);
@@ -180,6 +190,8 @@ public class UsersListActivity extends AppCompatActivity {
 
         userListUpdateThread = new UsersListActivity.userListUpdateThread();
         userListUpdateActive = true;
+        userListLoadingThread = new UsersListActivity.userListLoadingThread();
+
 
         onShowUserView();
 
@@ -198,10 +210,24 @@ public class UsersListActivity extends AppCompatActivity {
                         mHandler.sendMessage(message);
                         //Log.i("Thread","Going...");
                     }
-                    Thread.sleep(2500);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    class userListLoadingThread extends Thread {
+
+        @Override
+        public void run() {
+            super.run();
+            try {
+                Thread.sleep(2500);
+                dialog.dismiss();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -230,6 +256,7 @@ public class UsersListActivity extends AppCompatActivity {
 
         if (userListUpdateThread != null) {
             userListUpdateActive = true;
+            //userListLoadingThread.run();
         }
     }
 

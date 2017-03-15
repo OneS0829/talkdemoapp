@@ -36,7 +36,12 @@
             android:name=".ChatMessageActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

@@ -58,6 +58,11 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.parse.starter.SignInActivity" />
         <activity android:name="com.parse.starter.ProfileActivity" />
+
+        <service
+            android:name="com.parse.starter.MyService"
+            android:enabled="true"
+            android:exported="true" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
